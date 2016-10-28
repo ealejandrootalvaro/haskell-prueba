@@ -11,7 +11,7 @@ error' :: String
 error' = "Error"
 
 connectionStr :: ByteString
-connectionStr = "postgres://xlyrtaxdwdozqh:ml6B7YXEWvGLdpcw5ty-BDrcne@ec2-50-19-240-113.compute-1.amazonaws.com:5432/dcku066iig1lq1"
+connectionStr = "postgres://ndvmdfyexshzni:bXvG8_ldqY9bGEMvDK9qY-tZvF@ec2-54-235-207-226.compute-1.amazonaws.com:5432/de2if8v7djdfmi"
 
 puerto :: Int
 puerto = 8087
