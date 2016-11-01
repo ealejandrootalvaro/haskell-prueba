@@ -24,6 +24,10 @@ import System.Random
 import qualified Data.ByteString.Char8 as B
 import qualified Database.PostgreSQL.Simple as D
 import qualified Network.Wai.Middleware.Cors as C
+import Network.Mail.Client.Gmail
+import qualified Network.Mail.Mime as EMAIL
+import qualified Data.Text as T
+import qualified Data.Text.Lazy as A
 
 main = do
 
@@ -70,6 +74,17 @@ main = do
     get "/clientes" $ do
       variable <- liftIO (getAllClientes conn)
       json variable
+      
+    post "/recuperarPassword" $ do
+      client <- (jsonData :: ActionM Client)
+      resp <- liftIO $ getClientByUsername conn client
+      
+      case resp of
+        [] -> json (Resultado {tipo= Just error', mensaje= Just "Usuario no existe"})
+        x -> do
+          let contr = take 8 $ randomString 1
+          res <- liftIO $ enviarCorreo (filterPass x) contr 
+          json (Resultado {tipo= Just success, mensaje= Just "Nueva contraseña enviada al correo"})
 
 
     put "/iniciarSesion" $ do
@@ -101,3 +116,10 @@ main = do
 filterToken :: [Client]->[String]
 filterToken []=[]
 filterToken (x:xs)= (fromJust(token x)):filterToken xs
+
+ilterPass :: [Client]->String
+filterPass [] = ""
+filterPass (x:[]) = fromJust $ email x
+
+enviarCorreo :: String -> String -> IO ()
+enviarCorreo destinatario contr= sendGmail "ealejandro.otalvaro@udea.edu.co" "gekoli94" (EMAIL.Address (Just "Edwin") "ealejandro.otalvaro@gmail.com") [EMAIL.Address Nothing (T.pack destinatario)] [] [] "Contraseña recuperada RestaurApps" (A.pack(mensajeEmail++contr)) [] 10000000
