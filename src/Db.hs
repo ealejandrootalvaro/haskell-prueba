@@ -41,6 +41,11 @@ getClientByToken :: D.Connection -> Client -> IO [Client]
 getClientByToken conn client = do
     result <- (D.query conn "select * from user_restaurant where token = ?" (D.Only (token client)))
     return result
+    
+getClientByUsername :: D.Connection -> Client -> IO [Client]
+getClientByUsername conn client = do
+  result <- (D.query conn "select * from user_restaurant where username = ?" (D.Only (username client)))
+  return result
 
 setToken conn client token=do
     result <- D.execute conn "UPDATE user_restaurant SET token=? WHERE username=?" (token,(username client))
