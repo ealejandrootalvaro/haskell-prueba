@@ -16,3 +16,6 @@ connectionStr = "postgresql://root:password@restaurants.cfydwt2k5iuk.us-west-2.r
 
 puerto :: Int
 puerto = 8087
+
+mensajeEmail :: String
+mensajeEmail = "Su cuenta se autodestruira en 5 segundos,\n\nIngrese con la siguiente contraseña para detener la explosion.\n\nContraseña: "
