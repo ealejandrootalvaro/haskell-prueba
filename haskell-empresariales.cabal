@@ -20,4 +20,6 @@ executable hello-scotty
                      , HTTP 
                      , http-types
                      , wai-cors
+                     , smtps-gmail
+                     , mime-mail
   hs-source-dirs:    src
