@@ -7,7 +7,7 @@ import Db
 import Domain
 import Constantes
 import Utilities
-import Data.Monoid ((<>))
+import Data.Monoid
 --import Data.Aeson (FromJSON, ToJSON)
 
 import Web.Scotty
