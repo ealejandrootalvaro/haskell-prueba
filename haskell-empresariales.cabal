@@ -9,7 +9,8 @@ executable hello-scotty
   default-extensions: OverloadedStrings
   ghc-options:        -O2 -Wall -threaded
   build-depends:       base                          
-                     , scotty                        
+                     , scotty
+                     , conduit
                      , bytestring                    
                      , text 
                      , random                        
