@@ -122,4 +122,4 @@ filterPass [] = ""
 filterPass (x:[]) = fromJust $ email x
 
 enviarCorreo :: String -> String -> IO ()
-enviarCorreo destinatario contr= sendGmail "ealejandro.otalvaro@udea.edu.co" "gekoli94" (EMAIL.Address (Just "Edwin") "ealejandro.otalvaro@gmail.com") [EMAIL.Address Nothing (T.pack destinatario)] [] [] "Contraseña recuperada RestaurApps" (A.pack(mensajeEmail++contr)) [] 10000000
+enviarCorreo destinatario contr= sendGmail "ealejandro.otalvaro@udea.edu.co" "gekoli94" (EMAIL.Address (Just "Edwin") "ealejandro.otalvaro@gmail.com") [EMAIL.Address Nothing (T.pack destinatario)] [] [] "Contraseña recuperada RestaurApps" (A.pack(mensajeEmail++contr)) []
