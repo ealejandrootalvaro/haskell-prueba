@@ -117,7 +117,7 @@ filterToken :: [Client]->[String]
 filterToken []=[]
 filterToken (x:xs)= (fromJust(token x)):filterToken xs
 
-ilterPass :: [Client]->String
+filterPass :: [Client]->String
 filterPass [] = ""
 filterPass (x:[]) = fromJust $ email x
 
