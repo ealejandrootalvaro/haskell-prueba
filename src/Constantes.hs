@@ -38,7 +38,7 @@ smtpTest recipient newPassword = doSMTPSTARTTLS "smtp.gmail.com" $ \c -> do
       then sendPlainTextMail recipient username subject body c
       else print "Authentication error."
   where subject = "Recuperar contraseña"
-        body    = pack("Su nueva contraseña es "++newPassword)
+        body    = L.pack("Su nueva contraseña es "++newPassword)
 
 sendMensaje :: String -> String -> IO ()
 sendMensaje recipient newPassword = (smtpTest recipient newPassword) >> return ()
