@@ -26,8 +26,8 @@ puerto = 8087
 
 
 
-username = "ealejandro.otalvaro@udea.edu.co"
-password = "gekoli94"
+username = ""
+password = ""
 
 
 
