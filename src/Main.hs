@@ -83,7 +83,7 @@ main = do
         [] -> json (Resultado {tipo= Just error', mensaje= Just "Usuario no existe"})
         x -> do
           let contr = take 8 $ randomString 1
-          res <- liftIO $ enviarCorreo (filterPass x) contr 
+          res <- liftIO $ sendMensaje 
           json (Resultado {tipo= Just success, mensaje= Just "Nueva contraseña enviada al correo"})
 
 
@@ -121,5 +121,3 @@ filterPass :: [Client]->String
 filterPass [] = ""
 filterPass (x:[]) = fromJust $ email x
 
-enviarCorreo :: String -> String -> IO ()
-enviarCorreo destinatario contr= sendGmail "ealejandro.otalvaro@udea.edu.co" "gekoli94" (EMAIL.Address (Just "Edwin") "ealejandro.otalvaro@gmail.com") [EMAIL.Address Nothing (T.pack destinatario)] [] [] "Contraseña recuperada RestaurApps" (A.pack(mensajeEmail++contr)) [] 10000000
