@@ -24,8 +24,7 @@ import System.Random
 import qualified Data.ByteString.Char8 as B
 import qualified Database.PostgreSQL.Simple as D
 import qualified Network.Wai.Middleware.Cors as C
-import Network.Mail.Client.Gmail
-import qualified Network.Mail.Mime as EMAIL
+
 import qualified Data.Text as T
 import qualified Data.Text.Lazy as A
 
