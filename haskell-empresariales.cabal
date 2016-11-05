@@ -21,6 +21,6 @@ executable hello-scotty
                      , HTTP 
                      , http-types
                      , wai-cors
-                     , smtps-gmail
-                     , mime-mail
+                     , HaskellNet
+                     , HaskellNet-SSL
   hs-source-dirs:    src
