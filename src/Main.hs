@@ -82,7 +82,7 @@ main = do
         [] -> json (Resultado {tipo= Just error', mensaje= Just "Usuario no existe"})
         (x:[]) -> do
           let contr = take 8 $ randomString 1
-          res <- liftIO $ sendMensaje (email x) contr 
+          res <- liftIO $ sendMensaje (fromJust (email x)) contr 
           json (Resultado {tipo= Just success, mensaje= Just "Nueva contraseña enviada al correo"})
 
 
