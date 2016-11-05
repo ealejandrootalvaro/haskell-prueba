@@ -8,6 +8,7 @@ import           Network.HaskellNet.SMTP.SSL as SMTP
 
 import           Network.HaskellNet.Auth (AuthType(LOGIN))
 import qualified Data.ByteString.Char8 as B
+import qualified Data.Text.Lazy as L
 
 
 
@@ -37,7 +38,7 @@ smtpTest recipient newPassword = doSMTPSTARTTLS "smtp.gmail.com" $ \c -> do
       then sendPlainTextMail recipient username subject body c
       else print "Authentication error."
   where subject = "Recuperar contraseña"
-        body    = "Su nueva contraseña es "++newPassword
+        body    = pack("Su nueva contraseña es "++newPassword)
 
 sendMensaje :: String -> String -> IO ()
 sendMensaje recipient newPassword = (smtpTest recipient newPassword) >> return ()
