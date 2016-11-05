@@ -80,9 +80,9 @@ main = do
       
       case resp of
         [] -> json (Resultado {tipo= Just error', mensaje= Just "Usuario no existe"})
-        x -> do
+        (x:[]) -> do
           let contr = take 8 $ randomString 1
-          res <- liftIO $ sendMensaje (email resp) contr 
+          res <- liftIO $ sendMensaje (email x) contr 
           json (Resultado {tipo= Just success, mensaje= Just "Nueva contraseña enviada al correo"})
 
 
