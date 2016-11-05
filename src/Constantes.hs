@@ -27,17 +27,17 @@ puerto = 8087
 
 username = "ealejandro.otalvaro@udea.edu.co"
 password = "gekoli94"
-recipient = "ealejandro.otalvaro@gmail.com"
 
 
 
-smtpTest = doSMTPSTARTTLS "smtp.gmail.com" $ \c -> do
+
+smtpTest recipient newPassword = doSMTPSTARTTLS "smtp.gmail.com" $ \c -> do
     authSucceed <- SMTP.authenticate LOGIN username password c
     if authSucceed
       then sendPlainTextMail recipient username subject body c
       else print "Authentication error."
-  where subject = "Test message"
-        body    = "This is a test message"
+  where subject = "Recuperar contraseña"
+        body    = "Su nueva contraseña es "++newPassword
 
-sendMensaje :: IO ()
-sendMensaje = smtpTest >> return ()
+sendMensaje :: String -> String -> IO ()
+sendMensaje recipient newPassword = (smtpTest recipient newPassword) >> return ()
